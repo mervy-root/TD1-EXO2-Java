@@ -26,7 +26,7 @@ public class ProjectTest {
             System.out.println(" Entrer votre choix : ");
             choix = scanner.nextInt();
 
-            if (choix < 1 || choix > 8) {
+            if (choix < 1 || choix > 12) {
                 System.out.println("Choix invalide!!!");
                 System.out.println("Veuillez entrer un choix valide");
             }
@@ -97,16 +97,6 @@ public class ProjectTest {
                 // Implement afficherEtudiantsListe() method
                 pause();
                 break;
-            /*
-             * 
-             * System.out.println("8. Ajouter un etudiant dans une liste");
-             * System.out.println("9. Afficher la liste des etudiants d'une liste");
-             * System.out.
-             * println("10. Afficher les étudiants des listes ayant une moyenne >=10");
-             * System.out.println("11. Calculer le nombre des étudiants de chaque liste");
-             * System.out.
-             * println("12. Calculer le nombre total des étudiants de toutes les liste");
-             */
             case 7:
                 separateur();
                 System.out.println("7. Creer une liste d'etudiants");
