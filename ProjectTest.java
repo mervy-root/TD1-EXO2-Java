@@ -29,7 +29,7 @@ public class ProjectTest {
                 System.out.println("Veuillez entrer un choix valide");
             }
 
-        } while (choix < 1 || choix > 8);
+        } while (choix < 0 || choix > 8);
 
         return choix;
     }
@@ -37,7 +37,7 @@ public class ProjectTest {
     // private static GroupeEtudiant grp;
 
     public static void Application() {
-        ProjectTest.effacerEcran();
+        // ProjectTest.effacerEcran();
 
         int choix;
         choix = ProjectTest.menu();
@@ -66,40 +66,38 @@ public class ProjectTest {
                 effacerEcran();
                 separateur();
                 System.out.println("2. Ajouter un etudiant dans un groupe");
-                Etudiant etudiant = new Etudiant();
-                etudiant.saisirEtudiant();
-                etudiant.afficherEtudiant();
-                // grp.ajouterEtudiant(etudiant);
-                // grp.afficherEtudiantsGroupe();
+                // scanner.nextLine();
+                GroupeEtudiant.ajouterEtudiant();
                 pause();
                 // ajouterEtudiantGroupe();
                 break;
             case 3:
                 effacerEcran();
                 separateur();
-                System.out.println("Afficher la liste des étudiants d’un groupe");
-                grp.afficherEtudiantsGroupe();
+                System.out.println("3. Afficher la liste des étudiants d'un groupe");
+                GroupeEtudiant.afficherEtudiantsGroupeStatic();
                 pause();
                 break;
             case 4:
                 effacerEcran();
                 separateur();
-                System.out.println("Afficher les étudiants ayant une moyenne >=10");
-                grp.afficherEtudiantsMoyenneSup10();
+                System.out.println("4. Afficher les étudiants ayant une moyenne >=10");
+                GroupeEtudiant.afficherEtudiantsMoyenneSup10Static();
                 pause();
                 break;
             case 5:
                 effacerEcran();
                 separateur();
-                System.out.println("Calculer le nombre des étudiants de chaque groupe");
-                System.out.println(grp.getNombreEtudiants());
+                System.out.println("5. Calculer le nombre des étudiants de chaque groupe");
+                GroupeEtudiant.getNombreEtudiantsStatic();
                 pause();
                 break;
             case 6:
                 effacerEcran();
                 separateur();
                 System.out.println("6. Calculer le nombre total des étudiants");
-                System.out.println(GroupeEtudiant.getNombreTotalEtudiants());
+                System.out.println(
+                        "Le systeme a: " + GroupeEtudiant.getNombreTotalEtudiants() + " etudiants de tous les groupes");
 
                 // Implement afficherEtudiantsListe() method
                 pause();

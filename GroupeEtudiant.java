@@ -18,7 +18,7 @@ public class GroupeEtudiant {
     // Pour connaitre le nombre total des etudiants de tous les groupes
     private static int nbTotalEtudiantGroupe = 0;
 
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     // Constructeur par defaut et surcharge
     public GroupeEtudiant() {
@@ -92,21 +92,43 @@ public class GroupeEtudiant {
 
         System.out.println("Entrez la taille maximale du groupe : ");
         this.setTailleMaxGroupe(scanner.nextInt());
+        scanner.nextLine();
     }
 
     // Ajouter un etudiant dans un groupe
-    public static void ajouterEtudiant(Etudiant etudiant, String nomGroupe) {
-        GroupeEtudiant tmp = GroupeEtudiant.rechercheGroupe(nomGroupe);
+    public static void ajouterEtudiant() {
+        GroupeEtudiant tmp = GroupeEtudiant.rechercheGroupe();
 
         if (tmp != null) {
             if (tmp.etudiants.length > tmp.nbEtudiantsGroupe) {
+                Etudiant etudiant = new Etudiant();
+                etudiant.saisirEtudiant();
+                etudiant.afficherEtudiant();
+
                 tmp.etudiants[tmp.nbEtudiantsGroupe++] = etudiant;
                 GroupeEtudiant.nbTotalEtudiantGroupe++;
             } else {
                 System.out.println("Le groupe d'etudiants est plein");
             }
         }
+
         return;
+    }
+
+    public static void afficherEtudiantsGroupeStatic() {
+        GroupeEtudiant tmp = GroupeEtudiant.rechercheGroupe();
+
+        if (tmp != null) {
+            tmp.afficherEtudiantsGroupe();
+        }
+    }
+
+    public static void afficherEtudiantsMoyenneSup10Static() {
+        GroupeEtudiant tmp = GroupeEtudiant.rechercheGroupe();
+
+        if (tmp != null) {
+            tmp.afficherEtudiantsMoyenneSup10();
+        }
     }
 
     // Afficher la liste des etudiants d'un groupe
@@ -126,6 +148,19 @@ public class GroupeEtudiant {
     }
 
     // Calculer le nombre d'etudiants de chaque groupe
+    public static void getNombreEtudiantsStatic() {
+        // ProjectTest.separateur();
+
+        for (GroupeEtudiant tmp : listGroupe) {
+            System.out.println("Nom: " + tmp.nomGroupe + " Niveau: " + tmp.niveauGroupe + " Nombre Etudiant: "
+                    + tmp.getNombreEtudiants());
+            // tmp.getNombreEtudiants();
+            ProjectTest.separateur();
+        }
+
+        // ProjectTest.separateur();
+    }
+
     public int getNombreEtudiants() {
         return this.nbEtudiantsGroupe;
     }
@@ -136,10 +171,24 @@ public class GroupeEtudiant {
     }
 
     // Rechercher un groupe d'etudiants
+    public static GroupeEtudiant rechercheGroupe() {
+        System.out.println("Entrez le nom du groupe des etudiants: ");
+        String nomGroupe = scanner.nextLine();
+
+        for (GroupeEtudiant tmp : GroupeEtudiant.listGroupe) {
+            if (tmp.nomGroupe.equals(nomGroupe)) {
+                return tmp;
+            }
+        }
+
+        System.out.println("Il y'a pas de groupe avec pour nom : " + nomGroupe);
+        return null;
+    }
+
     public static GroupeEtudiant rechercheGroupe(String nomGroupe) {
         // GroupeEtudiant tmp;
         for (GroupeEtudiant tmp : GroupeEtudiant.listGroupe) {
-            if (tmp.getNomGroupe() == nomGroupe) {
+            if (tmp.nomGroupe.equals(nomGroupe)) {
                 return tmp;
             }
         }
