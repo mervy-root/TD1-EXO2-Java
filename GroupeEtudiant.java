@@ -28,7 +28,7 @@ public class GroupeEtudiant {
         nbTotalEtudiantGroupe = 0;
         tailleMaxGroupe = 10;
 
-        listGroupe.add(this);
+        GroupeEtudiant.listGroupe.add(this);
         this.nbEtudiantsGroupe = 0;
     }
 
